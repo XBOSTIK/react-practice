@@ -1,10 +1,29 @@
+import { useState } from 'react';
 import './App.css';
 import Modal from './components/Modal';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="App">
-      <h1>Develop branch</h1>
+      <div className="app__content">
+        <div>
+          <h1>Modal in React</h1>
+          <button className="openModal-btn" onClick={openModal}>
+            open
+          </button>
+        </div>
+      </div>
+      <Modal open={isOpen} closeModal={closeModal} />
     </div>
   );
 }
